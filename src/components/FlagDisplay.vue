@@ -40,11 +40,17 @@ export default {
   height: 300px !important;
   flex: 1 1 240px !important;
   margin: 20px 20px !important;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgrey;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 3px 2px 7px darkslategray;
+  cursor: pointer;
 }
 
 .card-img {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   height: 145px;
 }
 
