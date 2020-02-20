@@ -4,9 +4,13 @@
       v-for="country in countryList"
       :key="country.name"
       :title="country.name"
-      :img-src="country.flag"
-      :img-alt="altCountryFlag(country.name)"
     >
+      <template v-slot:header>
+        <div
+          class="header-image"
+          :style="{ 'background-image': `url(${country.flag})` }"
+        ></div>
+      </template>
       <b-card-text class="text-left">
         <p>Capital: {{ country.capital }}</p>
         <p>Region: {{ country.region }}</p>
@@ -43,6 +47,20 @@ export default {
   border-radius: 4px;
   box-shadow: 1px 1px 5px darkgrey;
   transition: box-shadow 0.2s;
+}
+
+.card-header {
+  padding: 0;
+  width: 240px;
+  height: 130px;
+}
+
+.header-image {
+  height: 130px;
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .card:hover {

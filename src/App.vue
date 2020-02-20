@@ -23,12 +23,12 @@
 
             <b-input-group-append v-if="countryName">
               <b-button
-                variant="outline-success"
+                variant="success"
                 @click="displayCountry"
                 :disabled="invalidCountryName"
                 ><small>Go</small></b-button
               >
-              <b-button variant="outline-danger" @click="clearNameSearch"
+              <b-button variant="danger" @click="clearNameSearch"
                 ><small>Clear</small></b-button
               >
             </b-input-group-append>
@@ -121,7 +121,6 @@ export default {
   padding: 40px;
 }
 
-input,
 .custom-select {
   font-size: 0.9rem !important;
 }
