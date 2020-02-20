@@ -17,7 +17,9 @@ export default new Vuex.Store({
     },
     countriesByRegion(state) {
       return region =>
-        state.countries.filter(country => country.region === region);
+        state.allCountries
+          .filter(country => country.region === region)
+          .sort((a, b) => a.name > b.name);
     }
   },
   mutations: {

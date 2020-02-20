@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar variant="faded" fixed="top">
+    <b-navbar variant="light" fixed="top">
       <b-navbar-brand tag="h3">Where in the world?</b-navbar-brand>
     </b-navbar>
     <b-container fluid class="main-app">
@@ -40,25 +40,32 @@
             }}</option>
           </datalist>
         </b-col>
+
         <b-col lg="4" md="12" offset-lg="2">
           <b-form-select
             v-model="filterByRegion"
             :options="regions"
+            @change="displayCountriesByRegion"
           ></b-form-select>
         </b-col>
       </b-row>
 
-      <b-row class="results-row"> </b-row>
+      <b-row class="results-row">
+        <flag-display :countryList="countries"></flag-display>
+      </b-row>
     </b-container>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import FlagDisplay from "./components/FlagDisplay";
 
 export default {
   name: "App",
-  components: {},
+  components: {
+    FlagDisplay
+  },
   data() {
     return {
       countryName: "",
@@ -70,7 +77,8 @@ export default {
         { value: "Europe", text: "Europe" },
         { value: "Oceania", text: "Oceania" }
       ],
-      filterByRegion: null
+      filterByRegion: null,
+      countries: null
     };
   },
   computed: {
@@ -83,8 +91,16 @@ export default {
     ...mapActions(["getCountries"]),
     clearNameSearch() {
       this.countryName = "";
+      this.countries = [];
     },
-    displayCountry() {}
+    displayCountry() {
+      this.filterByRegion = null;
+      this.countries = [this.countryByName(this.countryName)];
+    },
+    displayCountriesByRegion() {
+      this.countryName = null;
+      this.countries = this.countriesByRegion(this.filterByRegion);
+    }
   },
   mounted() {
     this.getCountries();
@@ -94,14 +110,19 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   background-color: aliceblue;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   margin: 60px auto 0;
   padding: 40px;
+}
+
+input,
+.custom-select {
+  font-size: 0.9rem !important;
 }
 </style>
