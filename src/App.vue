@@ -4,15 +4,35 @@
       <b-navbar-brand tag="h3">Where in the world?</b-navbar-brand>
     </b-navbar>
     <b-container fluid class="main-app">
-      <b-row>
-        <b-col lg="4" md="6" class="mb-2">
-          <b-form-input
-            type="text"
-            v-model="countryName"
-            list="country-name-list"
-            id="country-name-search"
-            placeholder="Search for a country..."
-          ></b-form-input>
+      <b-row class="inputs-row mb-3">
+        <b-col lg="6" md="12" class="mb-2">
+          <b-input-group>
+            <b-input-group-prepend>
+              <b-input-group-text class="text-info"
+                ><b-icon-search
+              /></b-input-group-text>
+            </b-input-group-prepend>
+
+            <b-form-input
+              type="text"
+              v-model="countryName"
+              list="country-name-list"
+              id="country-name-search"
+              placeholder="Search for a country..."
+            ></b-form-input>
+
+            <b-input-group-append v-if="countryName">
+              <b-button
+                variant="outline-success"
+                @click="displayCountry"
+                :disabled="invalidCountryName"
+                ><small>Go</small></b-button
+              >
+              <b-button variant="outline-danger" @click="clearNameSearch"
+                ><small>Clear</small></b-button
+              >
+            </b-input-group-append>
+          </b-input-group>
 
           <datalist id="country-name-list">
             <option v-for="name in allCountryNames" :key="name">{{
@@ -20,19 +40,21 @@
             }}</option>
           </datalist>
         </b-col>
-        <b-col lg="4" offset-lg="4" md="5" offset-md="1">
+        <b-col lg="4" md="12" offset-lg="2">
           <b-form-select
             v-model="filterByRegion"
             :options="regions"
           ></b-form-select>
         </b-col>
       </b-row>
+
+      <b-row class="results-row"> </b-row>
     </b-container>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "App",
@@ -48,17 +70,24 @@ export default {
         { value: "Europe", text: "Europe" },
         { value: "Oceania", text: "Oceania" }
       ],
-      filterByRegion: ""
+      filterByRegion: null
     };
   },
   computed: {
-    ...mapState(["allCountryNames"])
+    ...mapGetters(["allCountryNames", "countryByName", "countriesByRegion"]),
+    invalidCountryName() {
+      return !this.allCountryNames.includes(this.countryName);
+    }
   },
   methods: {
-    ...mapActions(["getAllCountrieNames"])
+    ...mapActions(["getCountries"]),
+    clearNameSearch() {
+      this.countryName = "";
+    },
+    displayCountry() {}
   },
   mounted() {
-    this.getAllCountrieNames();
+    this.getCountries();
   }
 };
 </script>

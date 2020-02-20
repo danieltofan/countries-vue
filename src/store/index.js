@@ -6,21 +6,30 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    allCountryNames: []
+    allCountries: []
+  },
+  getters: {
+    allCountryNames(state) {
+      return state.allCountries.map(country => country.name);
+    },
+    countryByName(state) {
+      return name => state.allCountries.find(country => country.name === name);
+    },
+    countriesByRegion(state) {
+      return region =>
+        state.countries.filter(country => country.region === region);
+    }
   },
   mutations: {
-    setCountrieNames(state, data) {
-      state.allCountryNames = data;
+    setCountries(state, data) {
+      state.allCountries = data;
     }
   },
   actions: {
-    async getAllCountrieNames({ commit }) {
-      let url = "https://restcountries.eu/rest/v2/all?fields=name";
+    async getCountries({ commit }) {
+      let url = "https://restcountries.eu/rest/v2/all";
       let json = await axios.get(url);
-      commit(
-        "setCountrieNames",
-        json.data.map(item => item.name)
-      );
+      commit("setCountries", json.data);
     }
   },
   modules: {}
