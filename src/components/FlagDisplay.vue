@@ -1,28 +1,19 @@
 <template>
-  <b-card-group>
-    <b-card
-      v-for="country in countryList"
-      :key="country.name"
-      :title="country.name"
-    >
-      <template v-slot:header>
-        <div
-          class="header-image"
-          :style="{ 'background-image': `url(${country.flag})` }"
-        ></div>
-      </template>
-      <b-card-text class="text-left">
-        <p>Capital: {{ country.capital }}</p>
-        <p>Region: {{ country.region }}</p>
-        <p>Population: {{ country.population }}</p>
-      </b-card-text>
-    </b-card>
-  </b-card-group>
+  <b-card :title="country.name">
+    <template v-slot:header>
+      <div class="header-image" :style="{ 'background-image': `url(${country.flag})` }"></div>
+    </template>
+    <b-card-text class="text-left">
+      <p>Capital: {{ country.capital }}</p>
+      <p>Region: {{ country.region }}</p>
+      <p>Population: {{ country.population }}</p>
+    </b-card-text>
+  </b-card>
 </template>
 
 <script>
 export default {
-  props: ["countryList"],
+  props: ["country"],
   methods: {
     altCountryFlag(name) {
       return `${name}'s flag`;
@@ -32,12 +23,6 @@ export default {
 </script>
 
 <style scoped>
-.card-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
 .card {
   min-width: 240px;
   max-width: 240px;

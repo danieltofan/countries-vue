@@ -51,7 +51,9 @@
       </b-row>
 
       <b-row class="results-row">
-        <flag-display :countryList="countries"></flag-display>
+        <b-card-group>
+          <flag-display v-for="country in countries" :key="country.name" :country="country"></flag-display>
+        </b-card-group>
       </b-row>
     </b-container>
   </div>
@@ -123,5 +125,11 @@ export default {
 
 .custom-select {
   font-size: 0.9rem !important;
+}
+
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 </style>
