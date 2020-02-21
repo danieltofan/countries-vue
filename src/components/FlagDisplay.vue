@@ -1,7 +1,10 @@
 <template>
   <b-card :title="country.name">
     <template v-slot:header>
-      <div class="header-image" :style="{ 'background-image': `url(${country.flag})` }"></div>
+      <div
+        class="header-image"
+        :style="{ 'background-image': `url(${country.flag})` }"
+      ></div>
     </template>
     <b-card-text class="text-left">
       <p>Capital: {{ country.capital }}</p>

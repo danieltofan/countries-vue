@@ -52,7 +52,11 @@
 
       <b-row class="results-row">
         <b-card-group>
-          <flag-display v-for="country in countries" :key="country.name" :country="country"></flag-display>
+          <flag-display
+            v-for="country in countries"
+            :key="country.name"
+            :country="country"
+          ></flag-display>
         </b-card-group>
       </b-row>
     </b-container>
