@@ -222,12 +222,7 @@ body,
   width: 160px;
 }
 
-.card:first-of-type .card-header {
-  left: -1px;
-}
-
-.text-09,
-.text-09 label {
+.text-09, .text-09 label {
   font-size: 0.9rem;
 }
 </style>
