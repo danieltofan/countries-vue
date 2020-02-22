@@ -1,20 +1,23 @@
 <template>
-  <b-card :title="country.name" :class="{'is-dark': isDark}">
+  <b-card :title="country.name" :class="{ 'is-dark': isDark }">
     <template v-slot:header>
-      <div class="header-image" :style="{ 'background-image': `url(${country.flag})` }"></div>
+      <div
+        class="header-image"
+        :style="{ 'background-image': `url(${country.flag})` }"
+      ></div>
     </template>
     <b-card-text class="text-left">
       <p>Capital: {{ country.capital }}</p>
       <p>Region: {{ country.region }}</p>
       <p>Population: {{ country.population }}</p>
-      {{isDark}}
+      {{ isDark }}
     </b-card-text>
   </b-card>
 </template>
 
 <script>
 export default {
-  props: ['country', 'isDark'],
+  props: ["country", "isDark"],
   methods: {
     altCountryFlag(name) {
       return `${name}'s flag`;
@@ -57,7 +60,7 @@ export default {
 }
 
 .card.is-dark:hover {
-    box-shadow: 0px 0px 10px lavender;
+  box-shadow: 0px 0px 10px lavender;
 }
 
 .card-img {

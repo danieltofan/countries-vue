@@ -9,9 +9,16 @@
           </template>
 
           <b-dropdown-form>
-              <b-form-checkbox v-model="isDark" name="switch-dark" class="toggle-dark-input" :button-variant="toggleDarkVariant" @change="toggleBodyClass(isDark)" button>
-                Toggle dark mode
-              </b-form-checkbox>
+            <b-form-checkbox
+              v-model="isDark"
+              name="switch-dark"
+              class="toggle-dark-input"
+              :button-variant="toggleDarkVariant"
+              @change="toggleBodyClass(isDark)"
+              button
+            >
+              Toggle dark mode
+            </b-form-checkbox>
           </b-dropdown-form>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -36,7 +43,11 @@
             ></b-form-input>
 
             <b-input-group-append v-if="countryName">
-              <b-button variant="success" @click="displayCountry" :disabled="invalidCountryName">
+              <b-button
+                variant="success"
+                @click="displayCountry"
+                :disabled="invalidCountryName"
+              >
                 <small>Go</small>
               </b-button>
               <b-button variant="danger" @click="clearNameSearch">
@@ -47,9 +58,7 @@
 
           <datalist id="country-name-list">
             <option v-for="name in allCountryNames" :key="name">
-              {{
-              name
-              }}
+              {{ name }}
             </option>
           </datalist>
         </b-col>
@@ -65,7 +74,12 @@
 
       <b-row class="results-row">
         <b-card-group>
-          <flag-display v-for="country in countries" :key="country.name" :country="country" :isDark="isDark"></flag-display>
+          <flag-display
+            v-for="country in countries"
+            :key="country.name"
+            :country="country"
+            :isDark="isDark"
+          ></flag-display>
         </b-card-group>
       </b-row>
     </b-container>
@@ -103,16 +117,18 @@ export default {
       return !this.allCountryNames.includes(this.countryName);
     },
     navbarVariant() {
-      return this.isDark ? 'dark' : 'light'
+      return this.isDark ? "dark" : "light";
     },
     gearVariant() {
-      return this.isDark ? 'light' : 'dark'
+      return this.isDark ? "light" : "dark";
     },
     toggleDarkVariant() {
-      return this.isDark ? 'dark' : 'outline'
+      return this.isDark ? "dark" : "outline";
     },
     bodyVariant() {
-      return this.isDark ? ['body-dark', 'body-light'] : ['body-light', 'body-dark']
+      return this.isDark
+        ? ["body-dark", "body-light"]
+        : ["body-light", "body-dark"];
     }
   },
   methods: {
@@ -130,10 +146,10 @@ export default {
       this.countries = this.countriesByRegion(this.filterByRegion);
     },
     toggleBodyClass(isDark) {
-      const body = document.body
-      body.classList.remove(isDark ? 'body-dark' : 'body-light')
-      body.classList.add(isDark ? 'body-light' : 'body-dark')
-      this.$refs.dropdown.hide()
+      const body = document.body;
+      body.classList.remove(isDark ? "body-dark" : "body-light");
+      body.classList.add(isDark ? "body-light" : "body-dark");
+      this.$refs.dropdown.hide();
     }
   },
   mounted() {
@@ -143,7 +159,9 @@ export default {
 </script>
 
 <style lang="scss">
-body, .navbar, .b-icon {
+body,
+.navbar,
+.b-icon {
   transition: background-color 0.3s;
 }
 
@@ -159,7 +177,7 @@ body, .navbar, .b-icon {
 }
 
 .body-dark {
-  background-color: #212E37;
+  background-color: #212e37;
 }
 
 .body-light {
