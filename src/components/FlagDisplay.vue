@@ -2,7 +2,7 @@
   <b-card :title="country.name" :class="{ 'is-dark': isDark }">
     <template v-slot:header>
       <div
-        class="header-image"
+        class="header-image" :class=[flagBgSize]
         :style="{ 'background-image': `url(${country.flag})` }"
       ></div>
     </template>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ["country", "isDark"],
+  props: ['country', 'isDark', 'flagBgSize'],
   methods: {
     altCountryFlag(name) {
       return `${name}'s flag`;
@@ -32,7 +32,8 @@ export default {
   height: 300px !important;
   flex: 1 1 240px !important;
   margin: 20px 20px !important;
-  border-radius: 4px;
+  border: none;
+  outline: 1px solid rgba(0, 0, 0, 0.125) !important;
   transition: box-shadow 0.2s;
 }
 
@@ -49,7 +50,14 @@ export default {
   background-color: white;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.header-image.cover {
   background-size: cover;
+}
+
+.header-image.contain {
+  background-size: contain;
 }
 
 .card:hover {

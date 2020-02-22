@@ -8,17 +8,28 @@
             <b-icon-gear-fill font-scale="2" :variant="gearVariant" />
           </template>
 
-          <b-dropdown-form>
+          <b-dropdown-form class="text-09">
             <b-form-checkbox
               v-model="isDark"
               name="switch-dark"
-              class="toggle-dark-input"
+              class="toggle-dark-input text-center"
               :button-variant="toggleDarkVariant"
               @change="toggleBodyClass(isDark)"
               button
             >
               Toggle dark mode
             </b-form-checkbox>
+
+            <b-dropdown-divider v-if="countries"></b-dropdown-divider>
+
+            <b-form-group v-if="countries" label="Flag image style" class="text-center">
+              <b-form-radio-group
+                v-model="flagBgSize"
+                :options="['cover', 'contain']"
+                name="flag-bg-size"
+                buttons @change="hideMenu"
+              ></b-form-radio-group>
+            </b-form-group>
           </b-dropdown-form>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -79,6 +90,7 @@
             :key="country.name"
             :country="country"
             :isDark="isDark"
+            :flagBgSize = "flagBgSize"
           ></flag-display>
         </b-card-group>
       </b-row>
@@ -108,52 +120,56 @@ export default {
       ],
       filterByRegion: null,
       countries: null,
-      isDark: false
+      isDark: false,
+      flagBgSize: 'cover'
     };
   },
   computed: {
     ...mapGetters(["allCountryNames", "countryByName", "countriesByRegion"]),
     invalidCountryName() {
-      return !this.allCountryNames.includes(this.countryName);
+      return !this.allCountryNames.includes(this.countryName)
     },
     navbarVariant() {
-      return this.isDark ? "dark" : "light";
+      return this.isDark ? "dark" : "light"
     },
     gearVariant() {
-      return this.isDark ? "light" : "dark";
+      return this.isDark ? "light" : "dark"
     },
     toggleDarkVariant() {
-      return this.isDark ? "dark" : "outline";
+      return this.isDark ? "dark" : "outline"
     },
     bodyVariant() {
       return this.isDark
         ? ["body-dark", "body-light"]
-        : ["body-light", "body-dark"];
+        : ["body-light", "body-dark"]
     }
   },
   methods: {
     ...mapActions(["getCountries"]),
     clearNameSearch() {
-      this.countryName = "";
-      this.countries = [];
+      this.countryName = ""
+      this.countries = []
     },
     displayCountry() {
       this.filterByRegion = null;
-      this.countries = [this.countryByName(this.countryName)];
+      this.countries = [this.countryByName(this.countryName)]
     },
     displayCountriesByRegion() {
       this.countryName = null;
-      this.countries = this.countriesByRegion(this.filterByRegion);
+      this.countries = this.countriesByRegion(this.filterByRegion)
     },
     toggleBodyClass(isDark) {
       const body = document.body;
-      body.classList.remove(isDark ? "body-dark" : "body-light");
-      body.classList.add(isDark ? "body-light" : "body-dark");
-      this.$refs.dropdown.hide();
+      body.classList.remove(isDark ? "body-dark" : "body-light")
+      body.classList.add(isDark ? "body-light" : "body-dark")
+      this.$refs.dropdown.hide()
+    },
+    hideMenu() {
+      this.$refs.dropdown.hide()
     }
   },
   mounted() {
-    this.getCountries();
+    this.getCountries()
   }
 };
 </script>
@@ -196,10 +212,13 @@ body,
 
 .toggle-dark-input {
   width: 160px;
-  font-size: 0.9em;
 }
 
 .card:first-of-type .card-header {
   left: -1px;
+}
+
+.text-09, .text-09 label {
+  font-size: 0.9rem;
 }
 </style>
