@@ -2,7 +2,8 @@
   <b-card :title="country.name" :class="{ 'is-dark': isDark }">
     <template v-slot:header>
       <div
-        class="header-image" :class=[flagBgSize]
+        class="header-image"
+        :class="[flagBgSize]"
         :style="{ 'background-image': `url(${country.flag})` }"
       ></div>
     </template>
@@ -16,7 +17,7 @@
 
 <script>
 export default {
-  props: ['country', 'isDark', 'flagBgSize'],
+  props: ["country", "isDark", "flagBgSize"],
   methods: {
     altCountryFlag(name) {
       return `${name}'s flag`;
