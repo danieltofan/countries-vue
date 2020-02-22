@@ -10,7 +10,6 @@
       <p>Capital: {{ country.capital }}</p>
       <p>Region: {{ country.region }}</p>
       <p>Population: {{ country.population }}</p>
-      {{ isDark }}
     </b-card-text>
   </b-card>
 </template>
