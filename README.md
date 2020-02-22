@@ -1,6 +1,6 @@
 # countries
 
-This is a Vue.js implementation of the front end coding challenge found at https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca
+This is a Vue.js implementation of the front end coding challenge found at <a href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca" target="_blank">this site</a>
 
 ## Project setup
 ```
