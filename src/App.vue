@@ -198,4 +198,8 @@ body,
   width: 160px;
   font-size: 0.9em;
 }
+
+.card:first-of-type .card-header {
+  left: -1px;
+}
 </style>

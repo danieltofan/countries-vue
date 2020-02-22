@@ -34,8 +34,7 @@ export default {
   flex: 1 1 240px !important;
   margin: 20px 20px !important;
   border-radius: 4px;
-  box-shadow: 0px 0px 5px darkgrey;
-  transition: box-shadow 0.2s, transform 0.15s;
+  transition: box-shadow 0.2s;
 }
 
 .card-header {
