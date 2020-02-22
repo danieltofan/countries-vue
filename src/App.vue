@@ -22,12 +22,17 @@
 
             <b-dropdown-divider v-if="countries"></b-dropdown-divider>
 
-            <b-form-group v-if="countries" label="Flag image style" class="text-center">
+            <b-form-group
+              v-if="countries"
+              label="Flag image style"
+              class="text-center"
+            >
               <b-form-radio-group
                 v-model="flagBgSize"
                 :options="['cover', 'contain']"
                 name="flag-bg-size"
-                buttons @change="hideMenu"
+                buttons
+                @change="hideMenu"
               ></b-form-radio-group>
             </b-form-group>
           </b-dropdown-form>
@@ -90,7 +95,7 @@
             :key="country.name"
             :country="country"
             :isDark="isDark"
-            :flagBgSize = "flagBgSize"
+            :flagBgSize="flagBgSize"
           ></flag-display>
         </b-card-group>
       </b-row>
@@ -121,8 +126,8 @@ export default {
       filterByRegion: null,
       countries: null,
       isDark: false,
-      flagBgSize: 'cover'
-    };
+      flagBgSize: "cover"
+    }
   },
   computed: {
     ...mapGetters(["allCountryNames", "countryByName", "countriesByRegion"]),
@@ -151,15 +156,15 @@ export default {
       this.countries = []
     },
     displayCountry() {
-      this.filterByRegion = null;
+      this.filterByRegion = null
       this.countries = [this.countryByName(this.countryName)]
     },
     displayCountriesByRegion() {
-      this.countryName = null;
+      this.countryName = null
       this.countries = this.countriesByRegion(this.filterByRegion)
     },
     toggleBodyClass(isDark) {
-      const body = document.body;
+      const body = document.body
       body.classList.remove(isDark ? "body-dark" : "body-light")
       body.classList.add(isDark ? "body-light" : "body-dark")
       this.$refs.dropdown.hide()
@@ -170,8 +175,11 @@ export default {
   },
   mounted() {
     this.getCountries()
+    const body = document.body
+    body.classList.remove("body-dark")
+    body.classList.remove("body-light")
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -218,7 +226,8 @@ body,
   left: -1px;
 }
 
-.text-09, .text-09 label {
+.text-09,
+.text-09 label {
   font-size: 0.9rem;
 }
 </style>
