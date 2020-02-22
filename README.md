@@ -1,5 +1,7 @@
 # countries
 
+This is a Vue.js implementation of the front end coding challenge found at https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca
+
 ## Project setup
 ```
 npm install
@@ -29,6 +31,3 @@ npm run test:e2e
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
