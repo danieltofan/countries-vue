@@ -46,12 +46,8 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended",
       "@vue/prettier"
     ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
     "overrides": [
       {
         "files": [
@@ -70,13 +66,5 @@
   ],
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "vue-cli-service lint"
-    ]
   }
 }
