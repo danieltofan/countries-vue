@@ -104,55 +104,55 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-import FlagDisplay from "./components/FlagDisplay";
+import { mapActions, mapGetters } from 'vuex'
+import FlagDisplay from './components/FlagDisplay'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     FlagDisplay
   },
   data() {
     return {
-      countryName: "",
+      countryName: '',
       regions: [
-        { value: null, html: "<i>Select a geographical region</i>" },
-        { value: "Africa", text: "Africa" },
-        { value: "Americas", text: "Americas" },
-        { value: "Asia", text: "Asia" },
-        { value: "Europe", text: "Europe" },
-        { value: "Oceania", text: "Oceania" }
+        { value: null, html: '<i>Select a geographical region</i>' },
+        { value: 'Africa', text: 'Africa' },
+        { value: 'Americas', text: 'Americas' },
+        { value: 'Asia', text: 'Asia' },
+        { value: 'Europe', text: 'Europe' },
+        { value: 'Oceania', text: 'Oceania' }
       ],
       filterByRegion: null,
       countries: null,
       isDark: false,
-      flagBgSize: "cover"
+      flagBgSize: 'cover'
     }
   },
   computed: {
-    ...mapGetters(["allCountryNames", "countryByName", "countriesByRegion"]),
+    ...mapGetters(['allCountryNames', 'countryByName', 'countriesByRegion']),
     invalidCountryName() {
       return !this.allCountryNames.includes(this.countryName)
     },
     navbarVariant() {
-      return this.isDark ? "dark" : "light"
+      return this.isDark ? 'dark' : 'light'
     },
     gearVariant() {
-      return this.isDark ? "light" : "dark"
+      return this.isDark ? 'light' : 'dark'
     },
     toggleDarkVariant() {
-      return this.isDark ? "dark" : "outline"
+      return this.isDark ? 'dark' : 'outline'
     },
     bodyVariant() {
       return this.isDark
-        ? ["body-dark", "body-light"]
-        : ["body-light", "body-dark"]
+        ? ['body-dark', 'body-light']
+        : ['body-light', 'body-dark']
     }
   },
   methods: {
-    ...mapActions(["getCountries"]),
+    ...mapActions(['getCountries']),
     clearNameSearch() {
-      this.countryName = ""
+      this.countryName = ''
       this.countries = []
     },
     displayCountry() {
@@ -165,8 +165,8 @@ export default {
     },
     toggleBodyClass(isDark) {
       const body = document.body
-      body.classList.remove(isDark ? "body-dark" : "body-light")
-      body.classList.add(isDark ? "body-light" : "body-dark")
+      body.classList.remove(isDark ? 'body-dark' : 'body-light')
+      body.classList.add(isDark ? 'body-light' : 'body-dark')
       this.$refs.dropdown.hide()
     },
     hideMenu() {
@@ -176,8 +176,8 @@ export default {
   mounted() {
     this.getCountries()
     const body = document.body
-    body.classList.remove("body-dark")
-    body.classList.remove("body-light")
+    body.classList.remove('body-dark')
+    body.classList.remove('body-light')
   }
 }
 </script>
