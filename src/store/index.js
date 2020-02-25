@@ -1,8 +1,8 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import axios from "axios";
+import Vue from "vue"
+import Vuex from "vuex"
+import axios from "axios"
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
@@ -10,10 +10,16 @@ export default new Vuex.Store({
   },
   getters: {
     allCountryNames(state) {
-      return state.allCountries.map(country => country.name);
+      return state.allCountries.map(country => country.name)
     },
     countryByName(state) {
-      return name => state.allCountries.find(country => country.name === name);
+      return name => state.allCountries.find(country => country.name === name)
+    },
+    countryNameByAbbrev(state) {
+      return abbrev => state.allCountries.find(country => country.cioc === abbrev).name
+    },
+    borderCountryNames(state, getters) {
+      return name => getters.countryByName(name).borders.map(getters.countryNameByAbbrev)
     },
     countriesByRegion(state) {
       return region =>
@@ -21,7 +27,7 @@ export default new Vuex.Store({
           .filter(country => country.region === region)
           .sort((a, b) =>
             a.name.localeCompare(b.name, "en", { sensitivity: "base" })
-          );
+          )
     }
   },
   mutations: {
@@ -31,10 +37,10 @@ export default new Vuex.Store({
   },
   actions: {
     async getCountries({ commit }) {
-      let url = "https://restcountries.eu/rest/v2/all";
-      let json = await axios.get(url);
-      commit("setCountries", json.data);
+      let url = "https://restcountries.eu/rest/v2/all"
+      let json = await axios.get(url)
+      commit("setCountries", json.data)
     }
   },
   modules: {}
-});
+})
