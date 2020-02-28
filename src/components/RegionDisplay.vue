@@ -5,6 +5,7 @@
 				<b-input-group>
 					<b-input-group-prepend>
 						<b-input-group-text
+							class="px-1"
 							:class="{
 								'bg-dark': isDark,
 								'text-light': isDark
