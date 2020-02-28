@@ -114,7 +114,9 @@ export default {
 			return this.$store.getters.countryByName(this.name)
 		},
 		currencies() {
-			return this.country.currencies.map(c => c.name).join(', ')
+			return this.country.currencies
+				.map(c => `${c.name} (${c.code})`)
+				.join(', ')
 		},
 		languages() {
 			return this.country.languages.map(c => c.name).join(', ')
@@ -126,7 +128,7 @@ export default {
 			return this.$store.getters.borderCountryNames(this.name)
 		}
 	},
-	mounted() {
+	updated() {
 		this.$store.commit('setRegion', this.country.region)
 	},
 	methods: {
