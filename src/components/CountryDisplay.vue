@@ -126,6 +126,9 @@ export default {
 			return this.$store.getters.borderCountryNames(this.name)
 		}
 	},
+	mounted() {
+		this.$store.commit('setRegion', this.country.region)
+	},
 	methods: {
 		goHome() {
 			this.$router.push({ name: 'Home' })
@@ -147,6 +150,7 @@ export default {
 .flag-container img {
 	width: 100%;
 	height: auto;
+	outline: 1px solid darkslategray;
 }
 
 .country-info {

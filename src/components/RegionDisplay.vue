@@ -49,7 +49,7 @@
 			<b-col lg="4" md="12" offset-lg="2">
 				<b-form-select
 					:class="{ 'bg-dark': isDark, 'text-light': isDark }"
-					v-model="filterByRegion"
+					v-model="selectedRegion"
 					:options="regions"
 					@change="displayCountriesByRegion"
 				></b-form-select>
@@ -101,8 +101,6 @@ export default {
 				{ value: 'Europe', text: 'Europe' },
 				{ value: 'Oceania', text: 'Oceania' }
 			],
-			filterByRegion: null,
-			countries: null,
 			loading: false
 		}
 	},
@@ -111,11 +109,23 @@ export default {
 			isDark: 'isDarkMode',
 			flagBgSize: 'flagBgSize'
 		}),
+
 		...mapGetters([
 			'allCountryNames',
 			'countryByName',
 			'countriesByRegion'
 		]),
+		selectedRegion: {
+			get() {
+				return this.$store.state.selectedRegion
+			},
+			set(value) {
+				this.$store.commit('setRegion', value)
+			}
+		},
+		countries() {
+			return this.countriesByRegion(this.selectedRegion)
+		},
 		invalidCountryName() {
 			return !this.allCountryNames.includes(this.countryName)
 		}
@@ -135,19 +145,11 @@ export default {
 		displayCountriesByRegion() {
 			this.loading = true
 			this.countryName = null
-			this.countries = this.countriesByRegion(this.filterByRegion)
-			this.$store.commit('setDisplayFlagStyle', this.filterByRegion)
 			this.loading = false
 		},
 		goTo(name) {
 			this.$router.push({ name: 'Country', params: { name: name } })
 		}
-	},
-	/* mounted() {
-		this.getCountries()
-	}, */
-	destroyed() {
-		this.$store.commit('setDisplayFlagStyle', false)
 	}
 }
 </script>

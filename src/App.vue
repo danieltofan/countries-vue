@@ -25,11 +25,11 @@
 						</b-form-checkbox>
 
 						<b-dropdown-divider
-							v-if="displayFlagToggle"
+							v-if="selectedRegion"
 						></b-dropdown-divider>
 
 						<b-form-group
-							v-if="displayFlagToggle"
+							v-if="selectedRegion"
 							label="Flag image style"
 							class="text-center"
 						>
@@ -59,7 +59,7 @@ export default {
 		RegionDisplay
 	},
 	computed: {
-		...mapState(['displayFlagToggle']),
+		...mapState(['selectedRegion']),
 		isDark: {
 			get() {
 				return this.$store.state.isDarkMode

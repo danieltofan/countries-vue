@@ -8,8 +8,8 @@ export default new Vuex.Store({
   state: {
     allCountries: [],
     isDarkMode: false,
-    displayFlagToggle: false,
-    flagBgSize: 'cover'
+    flagBgSize: 'cover',
+    selectedRegion: null
   },
   getters: {
     allCountryNames(state) {
@@ -42,11 +42,11 @@ export default new Vuex.Store({
     setDarkMode(state, isDark) {
       state.isDarkMode = !!isDark
     },
-    setDisplayFlagStyle(state, flag) {
-      state.displayFlagToggle = !!flag
-    },
     setFlagBgSize(state, size) {
       state.flagBgSize = size
+    },
+    setRegion(state, region) {
+      state.selectedRegion = region
     }
   },
   actions: {
