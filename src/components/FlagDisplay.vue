@@ -12,7 +12,7 @@
 		<b-card-text class="text-left">
 			<p>Capital: {{ country.capital }}</p>
 			<p>Region: {{ country.region }}</p>
-			<p>Population: {{ country.population }}</p>
+			<p>Population: {{ country.population | numFormat }}</p>
 		</b-card-text>
 	</b-card>
 </template>

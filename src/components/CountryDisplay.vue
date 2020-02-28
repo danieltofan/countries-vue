@@ -45,7 +45,7 @@
 							</p>
 							<p class="text-left mb-1">
 								<span class="field-label">Population:</span>
-								{{ country.population }}
+								{{ country.population | numFormat }}
 							</p>
 							<p class="text-left mb-1">
 								<span class="field-label">Region:</span>
