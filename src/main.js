@@ -7,13 +7,14 @@ import {
   BootstrapVue,
   BootstrapVueIcons
 } from "bootstrap-vue"
+import VueLazyImageLoading from 'vue-lazy-image-loading'
 
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
-//import "./assets/bootstrap.slate.min.css"
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+Vue.use(VueLazyImageLoading)
 
 Vue.config.productionTip = false
 

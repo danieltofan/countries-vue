@@ -1,11 +1,13 @@
 <template>
 	<b-card :title="country.name" :class="{ 'is-dark': isDark }">
 		<template v-slot:header>
-			<div
-				class="header-image"
-				:class="[flagBgSize]"
-				:style="{ 'background-image': `url(${country.flag})` }"
-			></div>
+			<div class="header-image">
+				<lazy-background
+					:src="country.flag"
+					:size="flagBgSize"
+					position="center"
+				></lazy-background>
+			</div>
 		</template>
 		<b-card-text class="text-left">
 			<p>Capital: {{ country.capital }}</p>
@@ -51,14 +53,6 @@ export default {
 	background-color: white;
 	background-position: center;
 	background-repeat: no-repeat;
-}
-
-.header-image.cover {
-	background-size: cover;
-}
-
-.header-image.contain {
-	background-size: contain;
 }
 
 .card:hover {
