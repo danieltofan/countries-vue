@@ -5,4 +5,4 @@ module.exports = {
   pwa: {
     name: 'World Countries'
   }
-};
+}
