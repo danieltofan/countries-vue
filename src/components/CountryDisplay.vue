@@ -18,7 +18,7 @@
 			</b-row>
 
 			<b-row>
-				<b-col md="4" class="pl-0">
+				<b-col md="4" class="px-0 flag-display">
 					<figure class="flag-container">
 						<transition name="fade" mode="out-in">
 							<img :src="country.flag" />
@@ -153,7 +153,8 @@ export default {
 	outline: 1px solid darkslategray;
 }
 
-.country-info {
+.country-info,
+.flag-display {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
