@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/countries-vue/precache-manifest.cb775250c17f7bcdea76875e2131c850.js"
+  "/countries-vue/precache-manifest.4dddcfac65c1942dbf550f2f60d6cf53.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "countries"});
+workbox.core.setCacheNameDetails({prefix: "world-countries-vue"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {

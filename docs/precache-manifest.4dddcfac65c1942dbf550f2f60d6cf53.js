@@ -8,11 +8,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/countries-vue/css/chunk-4289d38b.1220fca1.css"
   },
   {
-    "revision": "1cfadc26086eacb39508",
+    "revision": "f2291ed96ad51b8e1c66",
     "url": "/countries-vue/css/chunk-vendors.992a103e.css"
   },
   {
-    "revision": "5aa4d001b6fa582ae5a610afe26e65ae",
+    "revision": "1d1ab0ae51845df5cfb59743b6a3104d",
     "url": "/countries-vue/index.html"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/countries-vue/js/chunk-4289d38b.08cfd4d6.js"
   },
   {
-    "revision": "1cfadc26086eacb39508",
-    "url": "/countries-vue/js/chunk-vendors.756e5224.js"
+    "revision": "f2291ed96ad51b8e1c66",
+    "url": "/countries-vue/js/chunk-vendors.16ec2392.js"
   },
   {
     "revision": "eaad674dbd2a1131ba56d722ba2306f1",
