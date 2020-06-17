@@ -27,10 +27,7 @@
 				</b-col>
 
 				<b-col md="6" offset-md="1" class="country-info">
-					<h3
-						class="text-left mb-3"
-						:class="{ 'text-light': isDark }"
-					>
+					<h3 class="text-left mb-3" :class="{ 'text-light': isDark }">
 						{{ country.name }}
 					</h3>
 
@@ -63,9 +60,7 @@
 
 						<b-col>
 							<p class="text-left mb-1">
-								<span class="field-label"
-									>Top Level Domain:</span
-								>
+								<span class="field-label">Top Level Domain:</span>
 								{{ domains }}
 							</p>
 							<p class="text-left mb-1">
@@ -79,11 +74,7 @@
 						</b-col>
 					</section>
 
-					<p
-						class="text-left mb-1"
-						v-if="bordered.length"
-						:class="{ 'text-light': isDark }"
-					>
+					<p class="text-left mb-1" v-if="bordered.length" :class="{ 'text-light': isDark }" >
 						<span class="field-label">Border Countries:</span>
 						<b-button
 							size="sm"
@@ -92,7 +83,8 @@
 							v-for="bor in bordered"
 							:key="bor"
 							@click="goTo(bor)"
-							>{{ bor | shortName }}</b-button
+							>{{ bor | shortName }}
+						</b-button
 						>
 					</p>
 				</b-col>

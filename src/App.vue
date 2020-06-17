@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<b-navbar :variant="navbarVariant" :type="navbarVariant" fixed="top">
-			<b-navbar-brand tag="h3">Where in the world?</b-navbar-brand>
+			<b-navbar-brand tag="h3" @click="reset">Where in the world?</b-navbar-brand>
 
 			<b-navbar-nav class="ml-auto">
 				<b-nav-item-dropdown right no-caret ref="dropdown">
@@ -46,7 +46,9 @@
 			</b-navbar-nav>
 		</b-navbar>
 
-		<router-view></router-view>
+		<transition name="fade" mode="out-in">
+			<router-view></router-view>
+		</transition>
 	</div>
 </template>
 
@@ -96,6 +98,9 @@ export default {
 		},
 		hideMenu(value) {
 			this.$refs.dropdown.hide()
+		},
+		reset() {
+			this.$store.commit('setRegion', null)
 		}
 	},
 	mounted() {
@@ -112,6 +117,10 @@ body,
 .navbar,
 .b-icon {
 	transition: background-color 0.3s;
+}
+
+h3.navbar-brand:hover {
+	cursor: pointer;
 }
 
 #app {
