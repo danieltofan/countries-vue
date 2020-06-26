@@ -50,9 +50,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async getCountries({
-      commit
-    }) {
+    async getCountries({commit}) {
       let url = "https://restcountries.eu/rest/v2/all"
       let json = await axios.get(url)
       commit("setCountries", json.data)
