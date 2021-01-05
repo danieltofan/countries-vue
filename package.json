@@ -11,7 +11,7 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.5",
     "numeral": "^2.0.6",
