@@ -32,6 +32,6 @@ describe('Router', () => {
   })
 
   it('uses correct base path for GitHub Pages', () => {
-    expect(router.options.history.base).toBe('/countries')
+    expect(router.options.history.base).toBe('/countries-vue')
   })
 })
