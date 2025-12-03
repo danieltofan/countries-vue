@@ -1,8 +1,8 @@
-# GlobeExplorer
+# FlagFinder
 
-An interactive geography exploration app built with Vue 3 and Tailwind CSS. Discover countries, compare demographics, and test your knowledge with fun quizzes.
+An interactive flag and country exploration app built with Vue 3 and Tailwind CSS. Discover flags from around the world, compare countries, and test your knowledge with fun quizzes.
 
-**Live Demo:** [GlobeExplorer](https://danieltofan.github.io/countries/)
+**Live Demo:** [FlagFinder](https://danieltofan.github.io/countries/)
 
 ## Features
 

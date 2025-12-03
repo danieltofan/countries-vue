@@ -35,12 +35,12 @@ describe('App.vue', () => {
     expect(wrapper.exists()).toBe(true)
   })
 
-  it('displays GlobeExplorer branding', async () => {
+  it('displays FlagFinder branding', async () => {
     const wrapper = mount(App, {
       global: { plugins: [router] }
     })
     await router.isReady()
-    expect(wrapper.text()).toContain('GlobeExplorer')
+    expect(wrapper.text()).toContain('FlagFinder')
   })
 
   it('has navigation links', async () => {
@@ -62,21 +62,22 @@ describe('App.vue', () => {
     expect(toggleButton.exists()).toBe(true)
   })
 
-  it('toggles dark mode on button click', async () => {
+  it('toggles dark mode off on button click (dark is default)', async () => {
     const wrapper = mount(App, {
       global: { plugins: [router] }
     })
     await router.isReady()
 
-    const toggleButton = wrapper.find('button[aria-label="Switch to dark mode"]')
+    // Dark mode is default, so button should say "Switch to light mode"
+    const toggleButton = wrapper.find('button[aria-label="Switch to light mode"]')
     await toggleButton.trigger('click')
 
-    expect(document.documentElement.classList.contains('dark')).toBe(true)
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('darkMode', true)
+    expect(document.documentElement.classList.contains('dark')).toBe(false)
+    expect(localStorageMock.setItem).toHaveBeenCalledWith('darkMode', false)
   })
 
-  it('loads dark mode from localStorage', async () => {
-    localStorageMock.getItem.mockReturnValue('true')
+  it('defaults to dark mode when localStorage is empty', async () => {
+    localStorageMock.getItem.mockReturnValue(null)
 
     mount(App, {
       global: { plugins: [router] }
@@ -84,6 +85,18 @@ describe('App.vue', () => {
     await router.isReady()
 
     expect(document.documentElement.classList.contains('dark')).toBe(true)
+  })
+
+  it('respects light mode preference from localStorage', async () => {
+    localStorageMock.getItem.mockReturnValue('false')
+    document.documentElement.classList.add('dark') // Start with dark
+
+    mount(App, {
+      global: { plugins: [router] }
+    })
+    await router.isReady()
+
+    expect(document.documentElement.classList.contains('dark')).toBe(false)
   })
 
   it('has footer with attribution', async () => {

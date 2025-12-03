@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 
-const isDark = ref(false)
+const isDark = ref(true)
 
 function toggleDark() {
   isDark.value = !isDark.value
@@ -12,8 +12,11 @@ function toggleDark() {
 
 onMounted(() => {
   const saved = localStorage.getItem('darkMode')
-  if (saved === 'true') {
-    isDark.value = true
+  // Default to dark mode unless explicitly set to light
+  if (saved === 'false') {
+    isDark.value = false
+    document.documentElement.classList.remove('dark')
+  } else {
     document.documentElement.classList.add('dark')
   }
 })
@@ -26,10 +29,10 @@ onMounted(() => {
         <div class="flex items-center justify-between h-16">
           <RouterLink to="/" class="flex items-center gap-2 text-xl font-bold text-primary-600 dark:text-primary-400">
             <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
             </svg>
-            GlobeExplorer
+            FlagFinder
           </RouterLink>
 
           <div class="flex items-center gap-6">
