@@ -25,7 +25,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/countries/'),
+  history: createWebHistory('/countries-vue/'),
   routes
 })
 
