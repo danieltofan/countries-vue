@@ -1,23 +1,32 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
+import { createRouter, createWebHistory } from 'vue-router'
 
-Vue.use(VueRouter)
+const routes = [
+  {
+    path: '/',
+    name: 'Dashboard',
+    component: () => import('../views/Dashboard.vue')
+  },
+  {
+    path: '/country/:code',
+    name: 'CountryDetail',
+    props: true,
+    component: () => import('../views/CountryDetail.vue')
+  },
+  {
+    path: '/compare',
+    name: 'Compare',
+    component: () => import('../views/Compare.vue')
+  },
+  {
+    path: '/quiz',
+    name: 'Quiz',
+    component: () => import('../views/Quiz.vue')
+  }
+]
 
-const routes = [{
-        path: "/",
-        name: "Home",
-        component: () => import("../components/RegionDisplay.vue")
-    },
-    {
-        path: "/:name",
-        name: "Country",
-        props: true,
-        component: () => import("../components/CountryDisplay.vue")
-    }
-];
-
-const router = new VueRouter({
-    routes
-});
+const router = createRouter({
+  history: createWebHistory('/countries/'),
+  routes
+})
 
 export default router
